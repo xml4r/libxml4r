@@ -1,6 +1,52 @@
 = libxml-bindings
 
-Description goes here.
+This introduction text is taken from http://thebogles.com/blog/an-hpricot-style-interface-to-libxml#,
+credit to Phil Bogle.
+
+== Convenience functions
+
+You can call to_xml_doc on any string to convert it into an XML::Document:
+
+	>> s = '<foo id="1"><author>p. bogle</author><bar>content</bar><bar>cont2</bar></foo>'
+	>> root = s.to_xml_doc.root
+
+The at() method returns the first Node matching the given xpath:
+
+	>> root.at("author")
+	=> <author>p. bogle</author>
+
+The search() method returns a list of Nodes matching the given xpath:
+
+	>> root.search("bar")
+	=> [<bar>content</bar>, <bar>content2</bar>]
+
+search() can also be called with a block to iterate through each of the matching nodes:
+
+	>>  root.search("bar") do |bar| puts bar.xpath; end
+	/foo/bar[1]
+	/foo/bar[2]
+
+== Namespace helpers
+
+The handling of default namespaces in libxml-ruby is awkward because you have to remember to pass along an array of namespace strings to every find() method call, and because you have to repeat yourself about the href of the default namespace.
+
+The helpers add a register_default_namespace function that makes this simpler.
+
+Suppose you had XML like the following
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<feed xmlns="http://www.w3.org/2005/Atom"
+	        xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
+	        xmlns:gContact="http://schemas.google.com/contact/2008\"
+	        xmlns:gd="http://schemas.google.com/g/2005">
+	  <title type=\"text\">Phil Bogle's Contacts</title>
+	   ...
+	</feed>
+
+Then you could say the following and have it work as expected:
+
+	root.register_default_namespace("atom")
+	root.search("atom:title")
 
 == Copyright
 
