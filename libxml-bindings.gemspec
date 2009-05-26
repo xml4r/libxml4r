@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["dreamcat4"]
-  s.date = %q{2009-05-26}
+  s.date = %q{2009-05-27}
   s.email = %q{dreamcat4@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION.yml",
     "lib/libxml-bindings.rb",
+    "lib/libxml_bindings.rb",
     "test/libxml_bindings_test.rb",
     "test/test_helper.rb"
   ]
