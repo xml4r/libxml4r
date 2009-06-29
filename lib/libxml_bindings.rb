@@ -83,8 +83,6 @@ end
 
 class String
   def to_libxml_doc
-    xp = XML::Parser.new
-    xp.string = self
-    return xp.parse
+    return XML::Parser.string(self).parse
   end
 end
