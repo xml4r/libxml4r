@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- https://wiki.internet2.edu/confluence/display/CPD/OSCARS+Client+Messaging -->
+<soap:Envelope
+        xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+        soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+    
+    <!-- Security headers and X.509 go here -->
+    
+    <soap:Body>
+        <m:createReservationResponse xmlns:m="http://oscars.es.net/OSCARS"
+            xmlns:ctrlp="http://ogf.org/schema/network/topology/ctrlPlane/20070707">
+            <m:globalReservationId>domain1-1000</m:globalReservationId>
+            <m:status>PENDING</m:status>
+            <m:pathInfo>
+                <m:pathSetupMode>user-xml</m:pathSetupMode>
+                <ctrlp:path id="path1">
+                    <ctrlp:hop id="1">
+                        <ctrlp:linkIdRef> 
+                            urn:ogf:network:domain1:node1:port1:link1
+                        </ctrlp:linkIdRef>
+                     </ctrlp:hop>
+                    
+                     <ctrlp:hop id="2">
+                        <ctrlp:linkIdRef> 
+                            urn:ogf:network:domain1:node2:port2:link1
+                        </ctrlp:linkIdRef>
+                     </ctrlp:hop>
+    
+                    <ctrlp:hop id="3">
+                        <ctrlp:linkIdRef> 
+                            urn:ogf:network:domain2:node1:port1:link1
+                        </ctrlp:linkIdRef>
+                     </ctrlp:hop>
+    
+                    <ctrlp:hop id="4">
+                        <ctrlp:linkIdRef> 
+                            urn:ogf:network:domain2:node2:port2:link1
+                        </ctrlp:linkIdRef>
+                     </ctrlp:hop>
+    
+                    <ctrlp:hop id="5">
+                        <ctrlp:linkIdRef> 
+                            urn:ogf:network:domain3:node1:port1:link1
+                        </ctrlp:linkIdRef>
+                     </ctrlp:hop>
+    
+                    <ctrlp:hop id="6">
+                        <ctrlp:linkIdRef> 
+                            urn:ogf:network:domain3:node2:port2:link1
+                        </ctrlp:linkIdRef>
+                     </ctrlp:hop>
+                </ctrlp:path>
+                
+                <m:layer2Info>
+                    <m:srcEndpoint>urn:ogf:network:domain1:node1:port1:link1</m:srcEndpoint>
+                    <m:srcVtag tagged="true">3000</m:srcVtag>
+                    <m:destEndpoint>urn:ogf:network:domain3:node2:port2:link1</m:destEndpoint>
+                    <m:destVtag tagged="true">3000</m:destVtag>
+                </m:layer2Info>
+            </m:pathInfo>
+        </m:createReservationResponse>
+    </soap:Body>
+
+</soap:Envelope>

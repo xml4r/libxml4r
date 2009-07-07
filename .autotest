@@ -1,0 +1,27 @@
+# -*- ruby -*-
+
+Autotest.add_hook :initialize do |at|
+	at.clear_mappings # Do not remove this line
+	
+	# Put your additional test files here
+	extra_mappings_pfx = "test/"
+	extra_mappings = {
+		"libxml_bindings.rb" => ["test_namespaces.rb"]
+	}
+	
+	# Do not edit below these lines
+	
+	at.add_mapping /^lib\/.*\.rb$/ do |f, _|
+		m=f.gsub /.*\//, "" # Strip leading path from #{f}
+		a=extra_mappings["#{m}"]
+		a.nil? ? a=[] : a=a.map {|e| extra_mappings_pfx+e} 
+		# at.files_matching(/test\/test_#{m}$/) + a
+		["test/test_#{m}"] + a
+	end
+
+	at.add_mapping /^test\/test.*\.rb$/ do |f, _|		
+		at.files_matching(/#{f}/)
+	end
+	
+end
+

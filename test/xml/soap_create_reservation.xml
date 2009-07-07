@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- https://wiki.internet2.edu/confluence/display/CPD/OSCARS+Client+Messaging -->
+<soap:Envelope
+        xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+        soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+    
+    <!-- Security headers and X.509 go here -->
+    
+    <soap:Body>
+        <m:createReservation xmlns:m="http://oscars.es.net/OSCARS">
+            <m:startTime>1179755264</m:startTime>
+            <m:endTime>1179755864</m:endTime>
+            <m:bandwidth>1000</m:bandwidth>
+            <m:description>Example reservation</m:description>
+            <m:pathInfo>
+               <m:pathSetupMode>user-xml</pathSetupMode>
+               <m:layer2Info>
+                   <m:srcEndpoint>urn:ogf:network:domain1:node1:port1:link1</m:srcEndpoint>
+                   <m:destEndpoint>urn:ogf:network:domain3:node2:port2:link1</m:destEndpoint>
+               </m:layer2Info>
+            </m:pathInfo>
+        </m:createReservation>
+    </soap:Body>
+
+</soap:Envelope>

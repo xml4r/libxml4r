@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- https://wiki.internet2.edu/confluence/display/CPD/OSCARS+Client+Messaging -->
+<soap:Envelope
+        xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+        soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+    
+    <!-- Security headers and X.509 go here -->
+    
+    <soap:Body>
+         <m:createPathResponse xmlns:m="http://oscars.es.net/OSCARS">
+            <m:globalReservationId>domain1-1000</m:globalReservationId>
+            <m:status>ACTIVE</m:status>
+         </m:createPathResponse>
+    </soap:Body>
+
+</soap:Envelope>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- http://publib.boulder.ibm.com/infocenter/iseries/v5r4/topic/rzamy/50/webserv/wssoapexam.htm -->
+<SOAP-ENV:Envelope
+   xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+   SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"> 
+   <SOAP-ENV:Body>
+      <m:OrderItem xmlns:m="Some-URI">
+      <RetailerID>557010</RetailerID>
+      <ItemNumber>1050420459</ItemNumber>
+      <ItemName>AMF Night Hawk Pearl M2</ItemName>
+      <ItemDesc>Bowling Ball</ItemDesc>
+      <OrderQuantity>100</OrderQuantity>
+      <WholesalePrice>130.95</WholeSalePrice>
+      <OrderDateTime>2000-06-19 10:09:56</OrderDateTime>
+      </m:OrderItem>
+   </SOAP-ENV:Body>  
+</SOAP-ENV:Envelope>

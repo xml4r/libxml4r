@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- http://publib.boulder.ibm.com/infocenter/iseries/v5r4/topic/rzamy/50/webserv/wssoapexam.htm -->
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <SOAP-ENV:Body>
+      <m:OrderItemResponse xmlns:m="Some-URI">
+      <OrderNumber>561381</OrderNumber>
+      </m:OrderItemResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

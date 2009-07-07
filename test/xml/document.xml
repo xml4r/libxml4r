@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- http://www.captain.at/howto-xml-xsl-example.php -->
+<?xml-stylesheet type="text/xsl" href="test.xsl"?>
+<document>
+<menu>
+   <item>
+      <name>Captain</name>
+      <url>http://www.captain.at</url>
+   </item>
+   <item>
+      <name>Jupiter</name>
+      <url>http://www.jupiterradio.com</url>
+   </item>
+   <item>
+      <name>Plants</name>
+      <url>http://www.bryophyllum.com</url>
+   </item>
+</menu>   
+<content>
+   <news>
+      <title>
+         test1
+      </title>
+      <news>
+         test 1 text
+      </news>
+   </news>
+   <news>
+      <title>
+         test2
+      </title>
+      <news>
+         <font face="courier">
+         <strong>test 2 text &#8801;</strong>
+         </font>
+      </news>
+      <include>
+         <data>
+            <item>
+               include-text1
+            </item>
+            <item>
+               include-text2
+            </item>
+         </data>
+      </include>
+   </news>
+</content>
+</document>
