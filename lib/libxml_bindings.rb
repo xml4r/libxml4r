@@ -3,6 +3,14 @@ module LibxmlBindings
 
   module XmlDocument
 
+    def last=(node)
+      self.last? ? self.root.sibling=node : self.root = node
+    end
+
+    # def node[](xpath)
+    #   self.root.at(xpath)
+    # end
+
     def at(xpath)
       self.root.at(xpath)
     end
@@ -31,6 +39,7 @@ module LibxmlBindings
     alias_method :strip!, :strip_namespaces!
     alias_method :[],:search
     alias_method :/,:at
+    # alias_method :node[],:at
   end
 
   module XmlNode
