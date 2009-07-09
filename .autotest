@@ -6,7 +6,10 @@ Autotest.add_hook :initialize do |at|
 	# Put your additional test files here
 	extra_mappings_pfx = "test/"
 	extra_mappings = {
-		"libxml_bindings.rb" => ["test_namespaces.rb"]
+		"libxml_bindings.rb" => [
+		  "test_xml_readers.rb",
+		  "test_xml_modifiers.rb",
+		  "test_xml_outputters.rb"]
 	}
 	
 	# Do not edit below these lines

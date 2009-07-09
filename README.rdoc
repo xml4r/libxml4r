@@ -1,39 +1,59 @@
 = libxml-bindings
 
-This introduction text is taken from http://thebogles.com/blog/an-hpricot-style-interface-to-libxml#,
-credit to Phil Bogle.
+{libxml-bindings}[http://github.com/dreamcat4/libxml-bindings/tree/master] is a light set of methods and bolt-ons which aren't maintained by the core {libxml ruby library}[http://libxml.rubyforge.org/install.xml]. These methods aim to provide a more convenient API interface which is provided and documented separately, but actually mixed in to extend the original LibXML::classes. Using these methods should significantly reduce the lines of code needed to perform the most common operations of accessing and manipulating an xml document structure.
 
-== Convenience functions
+For a full list of methods, please refer to the {RDoc Documentation}[http://rdoc.info/projects/dreamcat4/libxml-bindings] 
+and also the {Libxml-Ruby RDocs}[http://libxml.rubyforge.org/rdoc/]
 
-You can call to_xml_doc on any string to convert it into an XML::Document:
+For benkchmarks / performance comparison see http://cfis.savagexi.com/2008/07/16/resurrecting-libxml-ruby
+
+== Installation
+
+	gem sources -a http://gems.github.com
+	gem install dreamcat4-libxml-bindings
+
+== Getting started
+
+You can call +to_xmldoc+ on any xml string to convert it into an XML::Document
 
 	>> s = '<foo id="1"><author>p. bogle</author><bar>content</bar><bar>cont2</bar></foo>'
-	>> root = s.to_xml_doc.root
+	>> doc = s.to_xmldoc
 
-The at() method returns the first Node matching the given xpath:
+The +node["/xpath"]+ method returns the first Node matching the given {xpath}[http://www.w3schools.com/XPath/xpath_syntax.asp]
 
-	>> root.at("author")
+	>> doc.node["author"]
 	=> <author>p. bogle</author>
 
-The search() method returns a list of Nodes matching the given xpath:
+The +nodes["/xpath"]+ method returns an array of Nodes matching the given {xpath}[http://www.w3schools.com/XPath/xpath_syntax.asp]
 
-	>> root.search("bar")
+	>> doc.nodes["/foo/bar"]
 	=> [<bar>content</bar>, <bar>content2</bar>]
 
-search() can also be called with a block to iterate through each of the matching nodes:
++nodes[]+ can be called with a block to iterate through each of the matching nodes
 
-	>>  root.search("bar") do |bar| puts bar.xpath; end
+	>>  doc.nodes["bar"] do |bar| puts bar.xpath; end
 	/foo/bar[1]
 	/foo/bar[2]
 
-== Namespace helpers
+You can call +node[]+ on another node to iterate and search within a smaller context of the document
 
-The handling of default namespaces in libxml-ruby is awkward because you have to remember to pass along an array of namespace strings to every find() method call, and because you have to repeat yourself about the href of the default namespace.
+	>> foo = doc.node["/foo"]
+	>> foo.node["author"]
+	=> <author>p. bogle</author>
+	
+	>> foo.nodes["/bar"].each {|node| puts node.inner_xml}
+	=> "content2"
+	=> "cont2"
 
-The helpers add a register_default_namespace function that makes this simpler.
+For more information about XPath syntax, please see http://www.w3schools.com/XPath/xpath_syntax.asp
 
-Suppose you had XML like the following
+== Namespace Stripping
 
+The handling of default namespaces in libxml-ruby is extremely awkward and cumbersome as it requires passing along an array of namespace strings with every find() method call. It also represents ambiguity concerning the href of the default namespace.
+
+Suppose you had a namespaced XML source with xmlns:= directives like this
+	
+	>> document.to_xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<feed xmlns="http://www.w3.org/2005/Atom"
 	        xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
@@ -43,12 +63,30 @@ Suppose you had XML like the following
 	   ...
 	</feed>
 
-Then you could say the following and have it work as expected:
+With libxml-bindings its possible to do:
 
-	root.register_default_namespace("atom")
-	root.search("atom:title")
+	>> document.strip!
+
+And be left with plain xml which can be parsed more easily and without the need for specifying any confusing namespace directives
+
+	>> document.to_xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<feed>
+	  <title type=\"text\">Phil Bogle's Contacts</title>
+	   ...
+	</feed>
+	
+	>> document.node["/feed/title"].inner_xml
+	=> "Phil Bogle's Contacts"
+
+After manipulating your data model, a default namespace can later be re-applied on the top-level node. However its generally not recommended to use more than one namespace within the same xml document.
 
 == Copyright
 
-Copyright (c) 2009 dreamcat4. See LICENSE for details.
-Copyright (c) 2008 Phil Bogle. See LICENSE for details.
+ Copyright (c) 2009 dreamcat4. See LICENSE for details.
+
+== Contribution, Credits
+
+This project was started on the top of Phil Bogle's libxml_helper.rb[http://thebogles.com/blog/an-hpricot-style-interface-to-libxml#]. Most methods have been renamed to represent the api styling of the libxml project. The coding examples above are all adapted from Phil's original explanatory texts.
+
+Copyright (c) 2008 Phil Bogle.

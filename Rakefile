@@ -5,10 +5,11 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "libxml-bindings"
-    gem.summary = %Q{Dreamcat4's bindings for libxml-ruby. In development. This gem will provide convenience functions for both reading and writing XML in ruby. Implemented as wrapper for underlying libxml2 / SAX. Aims are to be faster (very much) and simpler (little bit) than hpricot. This project is a continuation / extension of libxml_helper.rb by Phil Bogle.}
+    gem.summary = %Q{Dreamcat4's bindings on libxml-ruby. Convenience methods for extending the core classes.}
     gem.email = "dreamcat4@gmail.com"
     gem.homepage = "http://github.com/dreamcat4/libxml-bindings"
     gem.authors = ["dreamcat4"]
+    gem.add_dependency("libxml-ruby", ">= 1.1.3")
 
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
@@ -36,7 +37,6 @@ rescue LoadError
   end
 end
 
-
 task :default => :test
 
 require 'rake/rdoctask'
@@ -47,7 +47,12 @@ Rake::RDocTask.new do |rdoc|
   else
     version = ""
   end
-
+  # rdoc --help --webcvs, -W url
+  # github_blob_url = "<%= github_url %>/blob/v#{version}/%s"
+  # github_raw_url = "<%= github_url %>/raw/v#{version}/%s"
+  # github_blob_url = "http://github.com/dreamcat4/libxml-bindings/blob/v#{version}/%s"
+  # github_raw_url = "http://github.com/dreamcat4/libxml-bindings/raw/v#{version}/%s"
+  # rdoc.options = ["--webcvs", "#{github_blob_url}"]
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "libxml-bindings #{version}"
   rdoc.rdoc_files.include('README*')
