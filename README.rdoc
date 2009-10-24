@@ -9,8 +9,8 @@ For benkchmarks / performance comparison see http://cfis.savagexi.com/2008/07/16
 
 == Installation
 
-	gem sources -a http://gems.github.com
-	gem install dreamcat4-libxml-bindings
+	gem sources -a http://gemcutter.org
+	gem install libxml-bindings
 
 == Getting started
 
