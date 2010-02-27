@@ -47,6 +47,12 @@ You can call +node[]+ on another node to iterate and search within a smaller con
 
 For more information about XPath syntax, please see http://www.w3schools.com/XPath/xpath_syntax.asp
 
+== Removing the whitespace nodes amongst our data nodes
+
+	::LibXML::XML.default_keep_blanks = false
+
+Put this line at the beginning, before parsing the xml document. Othewise libxml interpolates all the 'real' data nodes with string nodes of the whitespace found between them. So `node.next` will point to the next *data* node, and not something like `"\n      "`. This is the "right" thing to do, whenever expecting to walk along or iterate over the parsed doc tree.
+
 == Namespace Stripping
 
 The handling of default namespaces in libxml-ruby is extremely awkward and cumbersome as it requires passing along an array of namespace strings with every find() method call. It also represents ambiguity concerning the href of the default namespace.
@@ -80,6 +86,21 @@ And be left with plain xml which can be parsed more easily and without the need 
 	=> "Phil Bogle's Contacts"
 
 After manipulating your data model, a default namespace can later be re-applied on the top-level node. However its generally not recommended to use more than one namespace within the same xml document.
+
+== A Complete example
+
+Here we combine our usage of both the `libxml-ruby`, and `libxml-bindings` functions, which results in much smaller and more compact code. Its just a case of using the best tool for the job and spending the time to understand the libxml-ruby api.
+
+	::LibXML::XML.default_keep_blanks = false
+	@string = File.read(@launchd_plist)
+	@doc = @string.to_xmldoc.strip!
+	@doc = doc.node["/plist/dict"]
+	@nodes_plist_keys = @doc.nodes["key"]
+	@plist_keys_values = @nodes_xml_keys.collect {|n| [n.inner_xml, n.next] }
+
+== Final words
+
+Its well worth it to go back and visit all of the links on this page. The documentation to be found there is all absoloutely invaluable.
 
 == Copyright
 
