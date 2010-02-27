@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{libxml-bindings}
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["dreamcat4"]
   s.date = %q{2010-02-27}
-  s.description = %q{{libxml-bindings}[http://github.com/dreamcat4/libxml-bindings/tree/master] is a light set of methods and bolt-ons which aren't maintained by the core {libxml ruby library}[http://libxml.rubyforge.org/install.xml]. These methods aim to provide a more convenient API interface which is provided and documented separately, but actually mixed in to extend the original LibXML::classes. Using these methods should significantly reduce the lines of code needed to perform the most common operations of accessing and manipulating an xml document structure.}
+  s.description = %q{Libxml-bindings is a light set of methods and bolt-ons which aren't maintained by the core libxml ruby library. These methods aim to provide a more convenient API interface which is provided and documented separately, but actually mixed in to extend the original LibXML::classes. Using these methods should significantly reduce the lines of code needed to perform the most common operations of accessing and manipulating an xml document structure.}
   s.email = %q{dreamcat4@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
