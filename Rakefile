@@ -6,13 +6,14 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "libxml-bindings"
     gem.summary = %Q{Dreamcat4's bindings on libxml-ruby. Convenience methods for extending the core classes.}
+    gem.description = %Q{{libxml-bindings}[http://github.com/dreamcat4/libxml-bindings/tree/master] is a light set of methods and bolt-ons which aren't maintained by the core {libxml ruby library}[http://libxml.rubyforge.org/install.xml]. These methods aim to provide a more convenient API interface which is provided and documented separately, but actually mixed in to extend the original LibXML::classes. Using these methods should significantly reduce the lines of code needed to perform the most common operations of accessing and manipulating an xml document structure.}
     gem.email = "dreamcat4@gmail.com"
     gem.homepage = "http://github.com/dreamcat4/libxml-bindings"
     gem.authors = ["dreamcat4"]
     gem.add_dependency("libxml-ruby", ">= 1.1.3")
-
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
