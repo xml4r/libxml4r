@@ -89,7 +89,7 @@ After manipulating your data model, a default namespace can later be re-applied 
 
 == A Complete example
 
-Here we combine our usage of both the `libxml-ruby`, and `libxml-bindings` functions, which results in much smaller and more compact code. Its just a case of using the best tool for the job and spending the time to understand the libxml-ruby api.
+Here we combine our usage of both the `libxml-ruby`, and `libxml-bindings` functions, which results in much smaller and more compact code. Its just a case of using the right tool for the right job.
 
 	::LibXML::XML.default_keep_blanks = false
 	@string = File.read(@launchd_plist)
@@ -100,7 +100,7 @@ Here we combine our usage of both the `libxml-ruby`, and `libxml-bindings` funct
 
 == Final words
 
-Its well worth it to go back and visit all of the links on this page. The documentation to be found there is all absoloutely invaluable.
+Its well worth it spending some time to understand the libxml-ruby api and xpath. Its well worth it to go back and revisit all of the links dotted around this page. Those documentation are absoloutely invaluable. 100% the best.
 
 == Copyright
 
