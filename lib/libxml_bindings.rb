@@ -206,7 +206,7 @@ module LibxmlBindings #:nodoc:
     # 
     # The resulting libxml instance can be parsed, manipulated, and converted back to a string.
     def to_xmldoc
-      return XML::Parser.string(self).parse
+      return ::XML::Parser.string(self).parse
     end
   end
   
@@ -216,14 +216,14 @@ end
 module LibXML
   module XML #:nodoc:
     class Document #:nodoc:
-      include LibxmlBindings::XML::Document
+      include ::LibxmlBindings::XML::Document
     end
 
     class Node #:nodoc:
-      include LibxmlBindings::XML::Node  
+      include ::LibxmlBindings::XML::Node
     end
   end
 end
 class String #:nodoc:
-  include LibxmlBindings::String
+  include ::LibxmlBindings::String
 end
