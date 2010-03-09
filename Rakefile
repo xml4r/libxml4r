@@ -4,24 +4,26 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "libxml-bindings"
-    gem.summary = %Q{Dreamcat4's bindings on libxml-ruby. Convenience methods for extending the core classes.}
-    gem.description = %Q{Libxml-bindings is a light set of methods and bolt-ons which aren't maintained by the core libxml ruby library. These methods aim to provide a more convenient API interface which is provided and documented separately, but actually mixed in to extend the original LibXML::classes. Using these methods should significantly reduce the lines of code needed to perform the most common operations of accessing and manipulating an xml document structure.}
+    gem.name = "libxml4r"
+    gem.summary = %Q{Libxml4r provides convenience methods around the core libxml-ruby classes.}
+    gem.description = %Q{Libxml4r is a light set of methods and bolt-ons which aren't maintained by the core libxml ruby library. These methods aim to provide a more easy to use xml API. All libxml4r methods are mixed into the original LibXML::classes. (This gem was previously called libxml-bindings).}
     gem.email = "dreamcat4@gmail.com"
-    gem.homepage = "http://github.com/dreamcat4/libxml-bindings"
+    gem.homepage = "http://github.com/dreamcat4/libxml4r"
     gem.authors = ["dreamcat4"]
     gem.add_dependency("libxml-ruby", ">= 1.1.3")
+    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "yard", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/*_test.rb'
+  test.pattern = 'test/**/test_*.rb'
   test.verbose = true
 end
 
@@ -29,7 +31,7 @@ begin
   require 'rcov/rcovtask'
   Rcov::RcovTask.new do |test|
     test.libs << 'test'
-    test.pattern = 'test/**/*_test.rb'
+    test.pattern = 'test/**/test_*.rb'
     test.verbose = true
   end
 rescue LoadError
@@ -38,25 +40,15 @@ rescue LoadError
   end
 end
 
+task :test => :check_dependencies
+
 task :default => :test
 
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  if File.exist?('VERSION.yml')
-    config = YAML.load(File.read('VERSION.yml'))
-    version = "#{config[:major]}.#{config[:minor]}.#{config[:patch]}"
-  else
-    version = ""
+begin
+  require 'yard'
+  YARD::Rake::YardocTask.new
+rescue LoadError
+  task :yardoc do
+    abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
   end
-  # rdoc --help --webcvs, -W url
-  # github_blob_url = "<%= github_url %>/blob/v#{version}/%s"
-  # github_raw_url = "<%= github_url %>/raw/v#{version}/%s"
-  # github_blob_url = "http://github.com/dreamcat4/libxml-bindings/blob/v#{version}/%s"
-  # github_raw_url = "http://github.com/dreamcat4/libxml-bindings/raw/v#{version}/%s"
-  # rdoc.options = ["--webcvs", "#{github_blob_url}"]
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "libxml-bindings #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
 end
-

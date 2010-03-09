@@ -1,4 +1,4 @@
-= libxml-bindings
+= libxml4r
 
 {libxml-bindings}[http://github.com/dreamcat4/libxml-bindings/tree/master] is a light set of methods and bolt-ons which aren't maintained by the core {libxml ruby library}[http://libxml.rubyforge.org/install.xml]. These methods aim to provide a more convenient API interface which is provided and documented separately, but actually mixed in to extend the original LibXML::classes. Using these methods should significantly reduce the lines of code needed to perform the most common operations of accessing and manipulating an xml document structure.
 
@@ -101,6 +101,12 @@ Here we combine our usage of both the `libxml-ruby`, and `libxml-bindings` funct
 == Final words
 
 Its well worth it spending some time to understand the libxml-ruby api and xpath. Its well worth it to go back and revisit all of the links dotted around this page. Those documentation are absoloutely invaluable. 100% the best.
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
 
 == Copyright
 
