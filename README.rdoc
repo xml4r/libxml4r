@@ -1,8 +1,8 @@
 = libxml4r
 
-{libxml-bindings}[http://github.com/dreamcat4/libxml-bindings/tree/master] is a light set of methods and bolt-ons which aren't maintained by the core {libxml ruby library}[http://libxml.rubyforge.org/install.xml]. These methods aim to provide a more convenient API interface which is provided and documented separately, but actually mixed in to extend the original LibXML::classes. Using these methods should significantly reduce the lines of code needed to perform the most common operations of accessing and manipulating an xml document structure.
+{libxml4r}[http://github.com/dreamcat4/libxml4r/tree/master] is a light set of methods and bolt-ons which aren't maintained by the core {libxml ruby library}[http://libxml.rubyforge.org/install.xml]. These methods aim to provide a more convenient API interface which is provided and documented separately, but actually mixed in to extend the original LibXML::classes. Using these methods should significantly reduce the lines of code needed to perform the most common operations of accessing and manipulating an xml document structure.
 
-For a full list of methods, please refer to the {RDoc Documentation}[http://rdoc.info/projects/dreamcat4/libxml-bindings] 
+For a full list of methods, please refer to the {RDoc Documentation}[http://rdoc.info/projects/dreamcat4/libxml4r] 
 and also the {Libxml-Ruby RDocs}[http://libxml.rubyforge.org/rdoc/]
 
 For benkchmarks / performance comparison see http://cfis.savagexi.com/2008/07/16/resurrecting-libxml-ruby
@@ -10,7 +10,7 @@ For benkchmarks / performance comparison see http://cfis.savagexi.com/2008/07/16
 == Installation
 
 	gem sources -a http://gemcutter.org
-	gem install libxml-bindings
+	gem install libxml4r
 
 == Getting started
 
@@ -69,7 +69,7 @@ Suppose you had a namespaced XML source with xmlns:= directives like this
 	   ...
 	</feed>
 
-With libxml-bindings its possible to do:
+With libxml4r its possible to do:
 
 	>> document.strip!
 
@@ -89,7 +89,7 @@ After manipulating your data model, a default namespace can later be re-applied 
 
 == A Complete example
 
-Here we combine our usage of both the `libxml-ruby`, and `libxml-bindings` functions, which results in much smaller and more compact code. Its just a case of using the right tool for the right job.
+Here we combine our usage of both the `libxml-ruby`, and `libxml4r` functions, which results in much smaller and more compact code. Its just a case of using the right tool for the right job.
 
 	::LibXML::XML.default_keep_blanks = false
 	@string = File.read(@launchd_plist)
@@ -101,19 +101,21 @@ Here we combine our usage of both the `libxml-ruby`, and `libxml-bindings` funct
 == Final words
 
 Its well worth it spending some time to understand the libxml-ruby api and xpath. Its well worth it to go back and revisit all of the links dotted around this page. Those documentation are absoloutely invaluable. 100% the best.
-== Note on Patches/Pull Requests
+
+== Notes on Patches/Pull Requests
  
-* Fork the project.
+* Fork the project, and create a topic branch as per {these instructions}[http://wiki.opscode.com/display/opscode/Working+with+Git].
 * Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
+* Include documentation for it.
+* Include a regression test for it. So I don't break it in a future version unintentionally.
 
 == Copyright
 
-Copyright (c) 2009 dreamcat4. See LICENSE for details.
+Copyright (c) 2009 Dreamcat4. See LICENSE for details.
 
 == Contribution, Credits
 
-This project was started on the top of Phil Bogle's libxml_helper.rb[http://thebogles.com/blog/an-hpricot-style-interface-to-libxml#]. Most methods have been renamed to represent the api styling of the libxml project. The coding examples above are all adapted from Phil's original explanatory texts.
+This project was started on the top of Phil Bogle's libxml_helper.rb[http://thebogles.com/blog/an-hpricot-style-interface-to-libxml#]. Most methods have been renamed to represent the api styling of the libxml project. Some coding examples here are also adapted from Phil's original explanatory texts.
 
 Copyright (c) 2008 Phil Bogle.
+Copyright (c) 2009-2010 Dreamcat4.

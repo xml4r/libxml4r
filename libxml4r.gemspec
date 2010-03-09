@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["dreamcat4"]
   s.date = %q{2010-03-08}
-  s.description = %q{Libxml4r is a light set of methods and bolt-ons which aren't maintained by the core libxml ruby library. These methods aim to provide a more easy to use xml API. All libxml4r methods are mixed into the original LibXML::classes. (This gem was previously called libxml-bindings).}
+  s.description = %q{Libxml4r is a light set of methods and bolt-ons which aren't maintained by the core libxml ruby library. These methods aim to provide a more easy to use xml API. All libxml4r methods are mixed into the original LibXML::classes. (This gem was previously called libxml4r).}
   s.email = %q{dreamcat4@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",

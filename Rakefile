@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "libxml4r"
     gem.summary = %Q{Libxml4r provides convenience methods around the core libxml-ruby classes.}
-    gem.description = %Q{Libxml4r is a light set of methods and bolt-ons which aren't maintained by the core libxml ruby library. These methods aim to provide a more easy to use xml API. All libxml4r methods are mixed into the original LibXML::classes. (This gem was previously called libxml-bindings).}
+    gem.description = %Q{Libxml4r is a light set of methods and bolt-ons which aren't maintained by the core libxml ruby library. These methods aim to provide a more easy to use xml API. All libxml4r methods are mixed into the original LibXML::classes. (This gem was previously called libxml4r).}
     gem.email = "dreamcat4@gmail.com"
     gem.homepage = "http://github.com/dreamcat4/libxml4r"
     gem.authors = ["dreamcat4"]
