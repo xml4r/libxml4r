@@ -208,20 +208,17 @@ module Libxml4r::String
   end
 end
 
-# # @private
-# # :nodoc:
-# class LibXML::XML::Document
-#   include ::Libxml4r::XML::Document
-# end
+# @private
+class LibXML::XML::Document
+  include ::Libxml4r::XML::Document
+end
 
 # @private
-# :nodoc:
 class LibXML::XML::Node
   include ::Libxml4r::XML::Node
 end
 
 # @private
-# :nodoc:
 class String
   include ::Libxml4r::String
 end
